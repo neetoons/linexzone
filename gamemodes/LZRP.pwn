@@ -8879,8 +8879,8 @@ public SelectJugadorABanear(playerid, JugadorBaneado[25], RazonBan[128])
 		format(string, 128, "Administrador: %s baneo off-line a %s",PlayerInfo[playerid][Nickname], JugadorBaneado);
 		MensajeAdmin(COLOR_GREY, string, ADMIN_LEVEL_ADM);
 
-        mysql_format(handle_db, DB_Query, sizeof(DB_Query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",JugadorBaneado);
-		mysql_pquery(handle_db, DB_Query);
+        //mysql_format(handle_db, DB_Query, sizeof(DB_Query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",JugadorBaneado);
+		//mysql_pquery(handle_db, DB_Query);
 		mysql_format(handle_db, DB_Query, sizeof(DB_Query), "UPDATE `usuarios` SET `Baneado` = '1', `razon` = '%e', `Banpor` = '%e' WHERE `ID` = '%d'", RazonBan, PlayerInfo[playerid][Nickname], DBID);
 		mysql_pquery(handle_db, DB_Query);
 		mysql_format(handle_db, DB_Query, sizeof(DB_Query), "INSERT INTO `registros_admin` (Responsable, Jugador, Razon, Accion) VALUES ('%e','%e','%e','3')",PlayerInfo[playerid][Nickname],JugadorBaneado,RazonBan);
@@ -23361,8 +23361,8 @@ public OnPlayerRegister(playerid)
 		mysql_format(handle_db, Query, sizeof(Query), "INSERT INTO `usuarios` (username, password,posX,posY,posZ,posA,vida,Registro,Email,EMS,Edad,Pais_Registro,Registro_U,username_low) VALUES ('%e','%e','1714.7008','-1898.6792','13.5666','0.0000','100','%02d/%02d/%02d','%e',1,%d,'%e','%e','ninguno')",PlayerInfo[playerid][Nickname],PlayerInfo[playerid][pPassword],day,month,year,PlayerInfo[playerid][pEmail],PlayerInfo[playerid][jEdad],PlayerInfo[playerid][pPaisRegistro],FechaRegistro);
 		mysql_pquery(handle_db, Query, "UsuarioRegistrado", "d", playerid);
 
-		mysql_format(handle_db, Query, sizeof(Query), "INSERT INTO `"PREFIX_DB"members` (member_name, passwd, real_name, date_registered, id_group, email_address,buddy_list, is_activated) VALUES ('%e', SHA1(CONCAT(LOWER('%e'))), '%e',UNIX_TIMESTAMP(now()), 13, '%e','0', '1')",PlayerInfo[playerid][Nickname],PlayerInfo[playerid][pPassword],rplName,PlayerInfo[playerid][pEmail]);
-		mysql_tquery(handle_db, Query);
+		//mysql_format(handle_db, Query, sizeof(Query), "INSERT INTO `"PREFIX_DB"members` (member_name, passwd, real_name, date_registered, id_group, email_address,buddy_list, is_activated) VALUES ('%e', SHA1(CONCAT(LOWER('%e'))), '%e',UNIX_TIMESTAMP(now()), 13, '%e','0', '1')",PlayerInfo[playerid][Nickname],PlayerInfo[playerid][pPassword],rplName,PlayerInfo[playerid][pEmail]);
+		//mysql_tquery(handle_db, Query);
 
 		switch(PlayerInfo[playerid][jSexo])
 		{
@@ -23388,14 +23388,14 @@ public OnPlayerRegister(playerid)
 		mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `registros` SET `Cantidad`='%d'",Usuarios[Cantidad]);
 		mysql_pquery(handle_db, Querys);
 
-		mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%e' WHERE `Variable`='latestRealName'",	PlayerInfo[playerid][Nickname]);
-		mysql_pquery(handle_db, Querys);
+		//mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%e' WHERE `Variable`='latestRealName'",	PlayerInfo[playerid][Nickname]);
+		//mysql_pquery(handle_db, Querys);
 
-		mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%d' WHERE `Variable`='totalMembers'",	Usuarios[Cantidad]);
-		mysql_pquery(handle_db, Querys);
+		//mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%d' WHERE `Variable`='totalMembers'",	Usuarios[Cantidad]);
+		//mysql_pquery(handle_db, Querys);
 
-		mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%d' WHERE `Variable`='latestMember'",	Usuarios[Cantidad]);
-		mysql_pquery(handle_db, Querys);
+		//mysql_format(handle_db, Querys, sizeof(Query), "UPDATE `"PREFIX_DB"settings` SET `Value`='%d' WHERE `Variable`='latestMember'",	Usuarios[Cantidad]);
+		//mysql_pquery(handle_db, Querys);
 
 		mysql_format(handle_db, Query, sizeof(Query),  "SELECT * FROM `usuarios` WHERE `Username` = '%e' AND `Password` = '%e';", PlayerInfo[playerid][Nickname], PlayerInfo[playerid][pPassword]);
 		mysql_pquery(handle_db, Query, "OnPlayerSpawnLoaded", "d", playerid);
@@ -43571,8 +43571,8 @@ public LevantarMano(playerid,actor)
 						if(PlayerConectado(l) && PlayerInfo[l][pMuteos] == 1) SendClientMessage(l,-1,string);
 					}
 					new query[520];
-					mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
-					mysql_pquery(handle_db, query);
+					//mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
+					//mysql_pquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "INSERT INTO `registros_admin` (Responsable, Jugador, Razon, Accion) VALUES ('Anticheat - Camionero','%e','SpeedHack','3')",PlayerInfo[playerid][Nickname]);
 					mysql_tquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "UPDATE `usuarios` SET `Baneado`='1',`razon`='Speed Hack (%d:1:%d)',`Banpor`='Anticheat' WHERE `Username`='%e'",numero, Carga[playerid],PlayerInfo[playerid][Nickname]);
@@ -43609,8 +43609,8 @@ public LevantarMano(playerid,actor)
 						if(PlayerConectado(l) && PlayerInfo[l][pMuteos] == 1) SendClientMessage(l,-1,string);
 					}
 					new query[520];
-					mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
-					mysql_pquery(handle_db, query);
+					//mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
+					//mysql_pquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "INSERT INTO `registros_admin` (Responsable, Jugador, Razon, Accion) VALUES ('Anticheat - Pescador','%e','SpeedHack','3')",PlayerInfo[playerid][Nickname]);
 					mysql_tquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "UPDATE `usuarios` SET `Baneado`='1',`razon`='Speed Hack (%d:1:%d)',`Banpor`='Anticheat' WHERE `Username`='%e'",numero, Carga[playerid],PlayerInfo[playerid][Nickname]);
@@ -43701,8 +43701,8 @@ public LevantarMano(playerid,actor)
 						if(PlayerConectado(l) && PlayerInfo[l][pMuteos] == 1) SendClientMessage(l,-1,string);
 					}
 					new query[520];
-					mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
-					mysql_pquery(handle_db, query);
+					//mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[playerid][Nickname]);
+					//mysql_pquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "INSERT INTO `registros_admin` (Responsable, Jugador, Razon, Accion) VALUES ('Anticheat - Basurero','%e','SpeedHack','3')",PlayerInfo[playerid][Nickname]);
 					mysql_tquery(handle_db, query);
 					mysql_format(handle_db, query, sizeof(query), "UPDATE `usuarios` SET `Baneado`='1',`razon`='Speed Hack (%d:1:%d)',`Banpor`='Anticheat' WHERE `Username`='%e'",numero, RecorridoBasu[playerid],PlayerInfo[playerid][Nickname]);
@@ -50948,9 +50948,9 @@ CMD:recibir(playerid,params[])
 				ShowPlayerDialog(playerid, INVENTARIO, DIALOG_STYLE_MSGBOX,"{DBED15}"SERVER_NAME"",string,"Ok","");
                 RevisarLogro(playerid,1);
 				GuardarCuenta(playerid);
-				new Query[256];
-				mysql_format(handle_db, Query, sizeof(Query), "UPDATE `"PREFIX_DB"members` SET `is_activated`='1' WHERE member_name='%s'", PlayerInfo[playerid][Nickname]);
-				mysql_tquery(handle_db, Query);
+				//new Query[256];
+				//mysql_format(handle_db, Query, sizeof(Query), "UPDATE `"PREFIX_DB"members` SET `is_activated`='1' WHERE member_name='%s'", PlayerInfo[playerid][Nickname]);
+				//mysql_tquery(handle_db, Query);
 			}
 		}
 	}
@@ -59555,8 +59555,8 @@ CMD:bant(playerid, params[])
 		PlayerInfo[ID][pAdmin] = ADMIN_LEVEL_USER;
   		new query[520];
 		PlayerInfo[playerid][@TempBan] = tiempobaneo;
-		mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[ID][Nickname]);
-		mysql_pquery(handle_db, query);
+		//mysql_format(handle_db, query, sizeof(query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[ID][Nickname]);
+		//mysql_pquery(handle_db, query);
 		mysql_format(handle_db, query, sizeof(query), "UPDATE `usuarios` SET `TempBan`='%d',`razon`='%e',`Banpor`='%e' WHERE `Username`='%e'",tiempobaneo, razon,PlayerInfo[playerid][Nickname],PlayerInfo[ID][Nickname]);
 		mysql_tquery(handle_db, query);
 		ExpulsarJugador(ID,"Baneo Temporal.");
@@ -59593,8 +59593,8 @@ CMD:banp(playerid, params[])
 		}
 		PlayerInfo[ID][pAdmin] = ADMIN_LEVEL_USER;
   		new query[520];
-  		mysql_format(handle_db, Query, sizeof(Query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[ID][Nickname]);
-		mysql_pquery(handle_db, Query);
+  		//mysql_format(handle_db, Query, sizeof(Query), "UPDATE `"PREFIX_DB"members` SET `id_group`='13' WHERE `member_name`='%e'",PlayerInfo[ID][Nickname]);
+		//mysql_pquery(handle_db, Query);
   		mysql_format(handle_db, query, sizeof(query), "INSERT INTO `registros_admin` (Responsable, Jugador, Razon, Accion) VALUES ('%e','%e','%e','3')",PlayerInfo[playerid][Nickname],PlayerInfo[ID][Nickname],ADMIN);
 		mysql_tquery(handle_db, query);
 		mysql_format(handle_db, Query, 200, "UPDATE `usuarios` SET `Baneado` = '1',`razon` = '%e',`Banpor` = '%e' WHERE `Username`='%e'", ADMIN,PlayerInfo[playerid][Nickname],PlayerInfo[ID][Nickname]);
