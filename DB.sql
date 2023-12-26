@@ -3859,7 +3859,8 @@ CREATE TABLE
     `FinDiaC` int (11) DEFAULT '0',
     `Participar` int (11) DEFAULT '0',
     `Striptease` int (11) DEFAULT '0',
-    `Anuncios` int (11) DEFAULT '0'
+    `Anuncios` int (11) DEFAULT '0',
+    `TiempoAD` int (11) DEFAULT '0'
   ) ENGINE = MyISAM AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8;
 
 --
