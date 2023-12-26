@@ -2,7 +2,7 @@
 //       Creditos: French, Patron, Kaiser y Jostin       //
 //                                                       //
 //                 LinexZone Roleplay                    //
-//                   Version: 5.04                       //
+//                   Version: 5.0.1                      //
 //                                                       //
 //      		Liberada por Virgolini                   //
 //               Razon: Filtraciones                     //
@@ -95,7 +95,7 @@
 #define SERVER_NAME2 "LinexZone"
 #define SERVER_NAME3 ""SERVER_COIN2"RP"
 #define RCON_PSSWRD "tuhermana"
-#define SERVER_VERSION "5.00"
+#define SERVER_VERSION "5.0.1"
 #define SERVER_NUMBER "1"
 #define PREFIX_DB "smf_"
 //===================================     MONEDA     ====================================//
