@@ -1,0 +1,12 @@
+logs
+pawno
+plugins
+*.amx
+*.dll
+*.so
+*.txt
+*.db
+*.log
+*.exe
+!filterscripts/*.amx
+!scriptfiles/*.txt
